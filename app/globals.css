@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+/* ─── CSS Variables (PROTECTED — do not rename/remove) ────────────────────── */
+:root {
+  --background: #06090f;
+  --foreground: #ffffff;
+  --primary: #06090f;
+  --primary-2: #0c1223;
+  --accent: #f4b942;
+  --muted: rgba(255,255,255,0.35);
+  --card-bg: #0c1223;
+  --card-border: rgba(244,185,66,0.12);
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── PROTECTED CSS classes (mobile modal) — DO NOT CHANGE ───────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #d4920d 0%, #f4b942 40%, #fcd34d 60%, #f4b942 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.casino-card-bg {
+  background: linear-gradient(145deg, #0c1223 0%, #0a0f1e 60%, #060a14 100%);
+}
+
+.casino-glow {
+  box-shadow: 0 4px 24px rgba(244,185,66,0.06);
+  transition: box-shadow 0.25s ease;
+}
+.casino-glow:hover {
+  box-shadow: 0 8px 40px rgba(244,185,66,0.14);
+}
+
+.gold-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer-sweep 2.5s linear infinite;
+  pointer-events: none;
+}
+
+.felt-texture {
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(244,185,66,0.04) 0%, transparent 70%),
+                    radial-gradient(ellipse at 100% 100%, rgba(91,156,246,0.03) 0%, transparent 60%);
+}
+
+.gold-border {
+  border: 1px solid rgba(244,185,66,0.3);
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── VAULT DARK Design System ────────────────────────────────────────────── */
+
+/* Background with radial glows */
+.vd-bg {
+  background-color: #07080e;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(244,185,66,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(130,80,200,0.05) 0%, transparent 60%);
+}
+
+/* Gold gradient text */
+.vd-gold-text {
+  background: linear-gradient(135deg, #e8a020 0%, #f5b942 40%, #fcd34d 60%, #f5b942 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dark card with gold border + hover glow */
+.vd-card {
+  background: linear-gradient(160deg, #141428 0%, #0f1024 60%, #0a0b1a 100%);
+  border: 1px solid rgba(244,185,66,0.14);
+  border-radius: 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.vd-card:hover {
+  border-color: rgba(244,185,66,0.4);
+  box-shadow: 0 8px 48px rgba(244,185,66,0.12), 0 0 0 1px rgba(244,185,66,0.08);
+}
+
+/* Gold CTA button */
+.vd-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #d4920d 0%, #f5b942 60%, #fcd34d 100%);
+  color: #07080e;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.vd-btn-gold:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 4px 24px rgba(244,185,66,0.5);
+  transform: translateY(-1px);
+}
+.vd-btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Shimmer sweep on buttons */
+.vd-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.vd-btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+  animation: btn-shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Eyebrow gold pill badge */
+.vd-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(244,185,66,0.12);
+  border: 1px solid rgba(244,185,66,0.3);
+  color: #f5b942;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+/* Emerald trust indicator chips */
+.vd-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(45,212,160,0.1);
+  border: 1px solid rgba(45,212,160,0.22);
+  color: #2dd4a0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Dark feature/info card */
+.vd-feature-card {
+  background: linear-gradient(160deg, #141428 0%, #0f0f22 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.vd-feature-card:hover {
+  border-color: rgba(244,185,66,0.25);
+  box-shadow: 0 4px 24px rgba(244,185,66,0.06);
+}
+
+/* Gold gradient horizontal divider */
+.vd-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(244,185,66,0.35) 30%, rgba(244,185,66,0.6) 50%, rgba(244,185,66,0.35) 70%, transparent 100%);
+}
+
+/* Responsible gambling link hover */
+.vd-rg-link {
+  transition: color 0.15s ease;
+}
+
+/* Footer divider */
+.section-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+/* Scrollbar hide */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes btn-shine {
+  0%   { left: -100%; }
+  30%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fade-up 0.5s ease-out forwards; }
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244,185,66,0.3); }
+  50%       { box-shadow: 0 0 0 8px rgba(244,185,66,0); }
+}
+
+.pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
