@@ -7,7 +7,6 @@ import type { Casino } from "../data/casinos";
 
 interface DesktopCasinoCardProps {
   casino: Casino;
-  rank: number;
 }
 
 const badgeLabels: Record<string, string> = {
@@ -57,7 +56,7 @@ function LogoBox({ name, logo, w, h }: { name: string; logo: string; w: number; 
   return <div style={{ flexShrink: 0 }}><CasinoSVGLogo name={name} width={w} height={h} /></div>;
 }
 
-export default function DesktopCasinoCard({ casino, rank }: DesktopCasinoCardProps) {
+export default function DesktopCasinoCard({ casino }: DesktopCasinoCardProps) {
   const { name, logo, bonus, url, votes, rating, badge } = casino;
   const handleClick = () => window.open(url, "_blank", "noopener,noreferrer");
   const tc = tcTexts[name] ?? "18+. T&C'S.APLICAM-SE. NOVOS REGISTOS APENAS.";

@@ -94,8 +94,8 @@ export default function HomePage() {
         <section id="casinos" style={{ background: "#09090f", paddingTop: "clamp(32px, 4vw, 56px)", paddingBottom: "clamp(32px, 4vw, 56px)" }}>
           <div className="w-full" style={{ paddingLeft: "clamp(20px, 6vw, 100px)", paddingRight: "clamp(20px, 6vw, 100px)" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 28px)" }}>
-              {regularCasinos.map((casino, i) => (
-                <DesktopCasinoCard key={casino.id} casino={casino} rank={i + 1} />
+              {regularCasinos.map((casino) => (
+                <DesktopCasinoCard key={casino.id} casino={casino} />
               ))}
             </div>
 
