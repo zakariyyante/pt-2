@@ -42,6 +42,7 @@ function processCasinos(raw: RawCasino[]): Casino[] {
 }
 
 const rawCasinos: RawCasino[] = [
+  
   {
     name: "Bwin",
     logo: "/bwin-logo-light.png",
